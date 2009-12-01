@@ -1,0 +1,15 @@
+CssAssetTagger
+==============
+
+Adds asset query strings to assets found in css files.
+
+Example
+=======
+
+Simply install the plugin and css files will be updated to include asset tags for any found assets.
+
+To modify the plugins behaviour, edit the settings in lib/css_asset_tagger_options.rb.
+* perform_tagging - Flag to determine if the css files should be modified with asset tags. Defaults to tag in production only.
+* css_paths - An array of css stylesheet paths. Defaults to the main stylesheets path.
+
+Copyright (c) 2009 Redline Software Inc., released under the MIT license
