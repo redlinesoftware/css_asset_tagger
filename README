@@ -3,6 +3,11 @@ CssAssetTagger
 
 Adds asset query strings to assets found in css files.
 
+Install
+=======
+
+script/plugin install git://github.com/redlinesoftware/css_asset_tagger.git
+
 Example
 =======
 
