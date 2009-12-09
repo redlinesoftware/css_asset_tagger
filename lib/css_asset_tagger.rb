@@ -5,13 +5,21 @@ class CssAssetTagger
       for file in files
         css = File.read file
         res = css.gsub!(/url\(("([^"]*)"|'([^']*)'|([^)]*))\)/mi) do |s|
-          uri = $1.to_s
-          if uri =~ /(\?|&)\d{10}/
-            # query string appears to exist already, so the uri is returned as is
+          # use $2 first if found, otherwise $1
+          # $2 will hold an unquoted string if quotes were used, but nil if they weren't
+          uri = ($2 || $1).to_s
+
+          # if the uri appears to begin with a protocol then the asset isn't on the local filesystem
+          # or if query string appears to exist already, the uri is returned as is
+          if uri =~ /[a-z]+:\/\//i || uri =~ /(\?|&)\d{10}/
             "url(#{uri})"
           else
+            # if the first char is a / then get the path of the file with respect to the absolute path of the asset files
+            # otherwise get the path relative to the current file
+            path = (uri.first == '/' ? "#{CssAssetTaggerOptions.asset_path}#{uri}" : "#{File.dirname(file)}/#{uri}")
+            asset_tag = File.stat(path).mtime.to_i
+
             # construct the uri with the associated asset query string
-            asset_tag = File.stat(file).mtime.to_i
             sep = (uri =~ /\?/).nil? ? '?' : '&'
             "url(#{uri}#{sep}#{asset_tag})"
           end
