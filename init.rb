@@ -1,3 +1,9 @@
 # see css_asset_tagger_options.rb for tagger options
 
-CssAssetTagger.tag(CssAssetTaggerOptions.css_paths) if CssAssetTaggerOptions.perform_tagging
+config.to_prepare do
+  CssAssetTaggerOptions.perform_tagging = Rails.env.production?
+  CssAssetTaggerOptions.css_paths = %W(#{RAILS_ROOT}/public/stylesheets)
+  CssAssetTaggerOptions.asset_path = "#{RAILS_ROOT}/public"
+
+  CssAssetTagger.tag(CssAssetTaggerOptions.css_paths) if CssAssetTaggerOptions.perform_tagging
+end

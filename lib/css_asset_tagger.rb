@@ -1,13 +1,14 @@
 class CssAssetTagger
-  def self.tag(paths)
+  def self.tag(paths, logger = nil)
+    logger ||= Logger.new($stderr)
+
     paths.each do |path|
       files = Dir.glob(File.join(path, '**/*.css'))
       for file in files
         css = File.read file
-        res = css.gsub!(/url\(("([^"]*)"|'([^']*)'|([^)]*))\)/mi) do |s|
-          # use $2 first if found, otherwise $1
-          # $2 will hold an unquoted string if quotes were used, but nil if they weren't
-          uri = ($2 || $1).to_s.strip
+        res = css.gsub!(/url\((?:"([^"]*)"|'([^']*)'|([^)]*))\)/mi) do |s|
+          # $1 is the double quoted string, $2 is single quoted, $3 is no quotes
+          uri = ($1 || $2 || $3).to_s.strip
 
           # if the uri appears to begin with a protocol then the asset isn't on the local filesystem
           # or if query string appears to exist already, the uri is returned as is
@@ -24,7 +25,7 @@ class CssAssetTagger
               "url(#{uri}#{sep}#{File.stat(path).mtime.to_i})"
             rescue Errno::ENOENT
               # the asset can't be found, so return the uri as is
-              STDERR.puts "CssAssetTagger: #{path} referenced from #{file} cannot be found."
+              logger.warn "CssAssetTagger: #{path} referenced from #{file} cannot be found."
               "url(#{uri})"
             end
           end
