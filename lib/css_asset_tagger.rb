@@ -25,7 +25,7 @@ class CssAssetTagger
               "url(#{uri}#{sep}#{File.stat(path).mtime.to_i})"
             rescue Errno::ENOENT
               # the asset can't be found, so return the uri as is
-              logger.warn "CssAssetTagger: #{path} referenced from #{file} cannot be found."
+              logger.warn "CssAssetTagger: #{path} referenced from #{file} cannot be found." if CssAssetTaggerOptions.show_warnings
               "url(#{uri})"
             end
           end
