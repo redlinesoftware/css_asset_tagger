@@ -6,17 +6,30 @@ Adds asset query strings to assets found in css files.
 Install
 =======
 
-script/plugin install git://github.com/redlinesoftware/css_asset_tagger.git
+rails 2: script/plugin install git://github.com/redlinesoftware/css_asset_tagger.git
+rails 3: rails plugin install git://github.com/redlinesoftware/css_asset_tagger.git
 
 Example
 =======
 
 Simply install the plugin and css files will be updated to include asset tags for any found assets.
 
-To modify the plugins behaviour, edit the settings in lib/css_asset_tagger_options.rb.
+before:
+background: url("/images/background.png") repeat-x scroll 0 0 #ffffff;
+
+after:
+background: url(/images/background.png?1296473764) repeat-x scroll 0 0 #ffffff;
+
+To modify the plugins behaviour, add an initializer file to config/initializers
 * perform_tagging - Flag to determine if the css files should be modified with asset tags. Defaults to tag in production only.
 * css_paths - An array of css stylesheet paths. Defaults to the main stylesheets path.
 * asset_path - The main asset path to be used when looking for assets with absolute file references.
 * show_warnings - Set to true to see warnings for assets that can't be found on the filesystem or false to not show the warnings.
 
-Copyright (c) 2009 Redline Software Inc., released under the MIT license
+ex. config/initializers/css_tagger_options.rb
+
+CssAssetTaggerOptions.setup do |config|
+  config.perform_tagging = true
+end
+
+Copyright (c) 2009-2011 Redline Software Inc., released under the MIT license
