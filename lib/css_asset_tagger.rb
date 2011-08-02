@@ -17,7 +17,7 @@ class CssAssetTagger
           else
             # if the first char is a / then get the path of the file with respect to the absolute path of the asset files
             # otherwise get the path relative to the current file
-            path = (uri.first == '/' ? "#{CssAssetTaggerOptions.asset_path}#{uri}" : "#{File.dirname(file)}/#{uri}")
+            path = (uri.chars.first == '/' ? "#{CssAssetTaggerOptions.asset_path}#{uri}" : "#{File.dirname(file)}/#{uri}")
 
             begin
               # construct the uri with the associated asset query string
