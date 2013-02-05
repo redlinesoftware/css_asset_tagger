@@ -37,3 +37,5 @@ class CssAssetTagger
     end
   end
 end
+
+require 'css_asset_tagger/railtie' if defined?(Rails)
