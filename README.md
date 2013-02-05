@@ -4,6 +4,8 @@ Adds asset query strings to assets found in css files.
 
 ## Install
 
+_The following no longer works from the git repo. Instead you'll need to checkout the **rails2** branch and use the plugin from that._
+
 rails 2: script/plugin install git://github.com/redlinesoftware/css_asset_tagger.git  
 rails 3: rails plugin install git://github.com/redlinesoftware/css_asset_tagger.git
 
