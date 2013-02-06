@@ -12,11 +12,9 @@ Gem::Specification.new do |s|
   s.description = "Tags assets in Rails app css files with asset query strings."
   s.authors = ['Andrew Kaspick']
 
-  s.files = Dir["CHANGELOG.md", "MIT-LICENSE", "README.md", "init.rb", "lib/**/*"]
+  s.files = Dir["MIT-LICENSE", "README.md", "lib/**/*"]
   s.test_files = Dir["test/**/*.rb"]
   s.require_paths = ["lib"]
-
-  #s.rubyforge_project = "css_asset_tagger"
 
   s.add_dependency('rails', '>= 3.0')
 end
