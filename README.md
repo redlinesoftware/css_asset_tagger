@@ -4,18 +4,18 @@ Adds asset query strings to assets found in css files.
 
 ## Install
 
-rails 2: script/plugin install git://github.com/redlinesoftware/css_asset_tagger.git  
-rails 3: rails plugin install git://github.com/redlinesoftware/css_asset_tagger.git
+In your Gemfile:  
+`gem 'css_asset_tagger', :git => 'git://github.com/redlinesoftware/css_asset_tagger.git'`
 
 ## Example
 
 Simply install the plugin and css files will be updated to include asset tags for any found assets.
 
 before:  
-background: url("/images/background.png") repeat-x scroll 0 0 #ffffff;
+`background: url("/images/background.png") repeat-x scroll 0 0 #ffffff;`
 
 after:  
-background: url(/images/background.png?1296473764) repeat-x scroll 0 0 #ffffff;
+`background: url(/images/background.png?1296473764) repeat-x scroll 0 0 #ffffff;`
 
 To modify the plugins behaviour, add an initializer file to config/initializers  
 
@@ -34,4 +34,4 @@ ex. config/initializers/css_tagger_options.rb
       config.perform_tagging = true
     end
 
-Copyright (c) 2009-2011 Redline Software Inc., released under the MIT license
+Copyright (c) 2009-2013 Redline Software Inc., released under the MIT license
