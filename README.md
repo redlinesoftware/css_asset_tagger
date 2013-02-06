@@ -1,6 +1,6 @@
 # CssAssetTagger
 
-Adds asset query strings to assets found in css files.
+Adds asset query strings to assets found in css files.  This gem originated as a rails plugin well before the asset pipeline was part of rails.  This plugin is still useful in Rails 3.1+ apps though if the asset pipeline is not enabled.
 
 ## Install
 
