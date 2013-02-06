@@ -30,6 +30,8 @@ To modify the plugins behaviour, add an initializer file to config/initializers
 
 ex. config/initializers/css_tagger_options.rb
 
+    require 'css_asset_tagger_options'
+    
     CssAssetTaggerOptions.setup do |config|
       config.perform_tagging = true
     end
