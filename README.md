@@ -5,7 +5,7 @@ Adds asset query strings to assets found in css files.  This gem originated as a
 ## Install
 
 In your Gemfile:  
-`gem 'css_asset_tagger', :git => 'git://github.com/redlinesoftware/css_asset_tagger.git'`
+`gem 'css_asset_tagger'`
 
 ## Example
 
