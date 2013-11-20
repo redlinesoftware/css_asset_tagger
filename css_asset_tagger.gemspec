@@ -7,11 +7,12 @@ Gem::Specification.new do |s|
   s.version = CssAssetTaggerOptions::VERSION.dup
   s.platform = Gem::Platform::RUBY
   s.summary = "Tags assets in Rails app css files with asset query strings."
-  s.email = "contact@plataformatec.com.br"
+  s.email = "andrew@redlinesoftware.com"
   s.homepage = "https://github.com/redlinesoftware/css_asset_tagger"
   s.description = "Tags assets in Rails app css files with asset query strings."
   s.authors = ['Andrew Kaspick']
 
+  s.license = 'MIT'
   s.files = Dir["MIT-LICENSE", "README.md", "lib/**/*"]
   s.test_files = Dir["test/**/*.rb"]
   s.require_paths = ["lib"]
